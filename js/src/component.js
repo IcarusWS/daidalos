@@ -2,9 +2,14 @@
 
 var Component = function(DOMElement)
 {
+    // data object
     this.data = {};
     this.data.DOMElement = DOMElement;
     this.data.StyleManager = new ComponentStyleManager(this);
+    // state object
+    this._state = 0;
+    this._statesListeners = {};
+
 }
 
 // event handlers
@@ -55,5 +60,23 @@ Component.prototype.showInlineBlock = function()
 Component.prototype.showInline = function()
 {
     this.data.StyleManager.setStyle('display', 'inline');
+    return this;
+}
+
+// states
+Component.prototype.setState = function(state)
+{
+    this._state = state;
+    return this;
+}
+
+Component.prototype.getState = function()
+{
+    return this._state;
+}
+
+Component.prototype.states = function(states)
+{
+    this._statesListeners = states;
     return this;
 }

@@ -44,3 +44,7 @@ Shows the component as an inline-block
 
 ##### ```showBlock()```
 Shows the component as a block
+
+
+#### States
+For states documentation, go to states.md
