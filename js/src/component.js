@@ -4,9 +4,10 @@ var Component = function(DOMElement)
 {
     this.data = {};
     this.data.DOMElement = DOMElement;
+    this.data.StyleManager = new ComponentStyleManager(this);
 }
 
-// general event handler
+// event handlers
 Component.prototype.on = function(event, callback)
 {
     var _self = this;
@@ -15,10 +16,10 @@ Component.prototype.on = function(event, callback)
         e.preventDefault();
         callback(_self);
     });
-    
+    return this;
 }
 
-Component.prototype.hover = function(over, leave)
+Component.prototype.hover = function(over=function(){}, leave=function(){})
 {
     var _self = this;
     this.data.DOMElement.addEventListener("mouseover", function(e) {
@@ -29,5 +30,12 @@ Component.prototype.hover = function(over, leave)
         e.preventDefault();
         leave(_self);
     })
-
+    return this;
 };
+
+// css stylings
+Component.prototype.hide = function()
+{
+    this.data.StyleManager.setStyle('display', 'none');
+    return this;
+}
