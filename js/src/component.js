@@ -39,3 +39,21 @@ Component.prototype.hide = function()
     this.data.StyleManager.setStyle('display', 'none');
     return this;
 }
+
+Component.prototype.showBlock = function()
+{
+    this.data.StyleManager.setStyle('display', 'block');
+    return this;
+}
+
+Component.prototype.showInlineBlock = function()
+{
+    this.data.StyleManager.setStyle('display', 'inline-block');
+    return this;
+}
+
+Component.prototype.showInline = function()
+{
+    this.data.StyleManager.setStyle('display', 'inline');
+    return this;
+}

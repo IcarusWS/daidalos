@@ -18,6 +18,7 @@ All methods are "chainable", meaning you can keep adding methods at the end of a
 ```javascript
 daidalos('title').on('click', function(){}).hover(function(){}, function(){}).hide();
 ```
+#### Events
 ##### ```on([event], [callback])```
 Adds an event listener to the component.
 Arguments:
@@ -30,3 +31,16 @@ Arguments:
 * ```hover callback```(function): This function is called when you start hovering over the component. This callback has one argument: ```component``` (the parent component)
 * ```leave callback```(function): This function is called when you leave the component. This callback has one argument: ```component``` (the parent component)
 
+#### CSS
+
+##### ```hide()```
+Hides the component (display: none)
+
+##### ```showBlock()```
+Shows the component as a block
+
+##### ```showInlineBlock()```
+Shows the component as an inline-block
+
+##### ```showBlock()```
+Shows the component as a block
