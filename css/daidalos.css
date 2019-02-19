@@ -3,3 +3,36 @@
     #1: Regular components start with a c, for example: c-title or c-button
     #2: Layout components start with a cl, for example: cl-footer or cl-menu
 */
+
+/* General */
+.c-uppercase {
+  text-transform: uppercase;
+}
+
+/*
+    Navigation usage:
+    <nav id="cl-navbar-dark-metro">
+      <a>Your links here</a>
+    </nav>
+*/
+
+#cl-navbar-dark-metro {
+  width: 100%;
+  height: 3em;
+  line-height: 3em;
+  text-align: center;
+  background-color: #313131;
+  position: fixed;
+}
+
+#cl-navbar-dark-metro a {
+  display: inline-block;
+  color: #fff;
+  text-decoration: none;
+  background-color: #444;
+  padding: 0 1em;
+}
+
+#cl-navbar a:hover {
+  background-color: #777;  
+}
