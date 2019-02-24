@@ -89,7 +89,7 @@ html {
   backface-visibility: hidden;
   color: #FFF;
   z-index: 10;
-  transition: background-color 300ms ease, color 260ms ease, padding 180ms ease;
+  transition: background-color 300ms ease, color 260ms ease;
 }
 
 .cl-navbar-light-pills a {
