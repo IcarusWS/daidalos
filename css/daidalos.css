@@ -77,6 +77,73 @@ html {
   The HTML structure that goes with it, as well as example pictures of the layouts can be found on our Github page, icarusws.github.io
 */
 
+/* ----- Pills navbar (light) ----- */
+.cl-navbar-light-pills {
+  position: fixed;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  max-height: 5em;
+  padding: 10px 40px;
+  text-align: center;
+  backface-visibility: hidden;
+  color: #FFF;
+  z-index: 10;
+  transition: background-color 300ms ease, color 260ms ease, padding 180ms ease;
+}
+
+.cl-navbar-light-pills a {
+  display: inline-block;
+  margin: 5px 5px 5px 0;
+  padding: 12px 20px;
+  font-size: 12px;
+  color: #FFF;
+  border: 1px solid transparent;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: bold;
+  transition: opacity 300ms ease;
+}
+
+.cl-navbar-light-pills a:hover {
+  color: #555;
+}
+
+.cl-navbar-light-pills.scroll {
+  border-bottom: 1px solid #D2D2D2;
+  background-color: #FFFFFF;
+}
+
+.cl-navbar-light-pills.scroll a {
+  color: #121212 !important;
+}
+
+.cl-navbar-light-pills.scroll a:hover {
+  color: #777 !important;
+}
+
+.cl-navbar-light-pills.scroll #nav-active {
+  border-color: #121212 !important;
+}
+
+.cl-navbar-light-pills #nav-active {
+  border-color: white !important;
+}
+
+.cl-navbar-light-pills .c-nav-logo {
+  float: left;
+  display: block;
+  height: 50px;
+}
+
+.cl-navbar-light-pills .c-nav-logo img {
+  height: 100%;
+}
+
+.cl-navbar-light-pills .c-nav-buttons {
+  float: right;
+}
+
 /* ----- Metro navbar (dark) ----- */
 .cl-navbar-dark-metro {
   width: 100%;
