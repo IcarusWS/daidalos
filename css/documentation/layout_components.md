@@ -6,7 +6,11 @@ Examples of Layout Components are footers, navbars and banners
 ## Navbars
 
 ### Pills navbar
-Example Image:
+_Dark:_
+![Navbars example](https://jessetraas.ostrealyceum.net/px/git-icarus/img/c-navbar-pills-dark.png)
+
+_Light:_
+![Navbars example](https://jessetraas.ostrealyceum.net/px/git-icarus/img/c-navbar-pills-light.png)
 
 Recommended HTML structure:
 ```sh
@@ -23,7 +27,8 @@ Recommended HTML structure:
 ```
 
 ### Metro navbar
-Example Image:
+_Dark:_
+![Navbars example](https://jessetraas.ostrealyceum.net/px/git-icarus/img/c-navbar-metro.png)
 
 Recommended HTML structure:
 ```sh
