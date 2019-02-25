@@ -14,7 +14,7 @@ _Light:_
 
 Recommended HTML structure:
 ```sh
-<nav class="cl-navbar-light-pills">
+<nav class="cl-navbar-pills cs-navbar-light">
   <div class="c-nav-logo">
     <img src="img/yourlogo.png" />
   </div>
@@ -25,6 +25,7 @@ Recommended HTML structure:
   </div>
 </nav>
 ```
+The class `.cs-navbar-light` can be swapped out for `.cs-navbar-dark` to apply the dark theme of the pills navbar.
 
 ### Metro navbar
 _Dark:_
