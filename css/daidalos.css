@@ -212,3 +212,92 @@ html {
   padding: 2em 0;
   text-align: center;
 }
+
+
+
+/* -------------------- Footers -------------------- */
+
+/* General footer classes */
+.cl-footer-list ul {
+  list-style: none;
+  line-height: 1.5;
+  padding-left: 0;
+}
+
+.cl-footer-list a {
+  text-decoration: none;
+}
+
+/* ---------- Dark footers ---------- */
+/* Simple footer */
+.cl-footer-simple-dark {
+  width: 100%;
+  height: 2em;
+  line-height: 2em;
+  text-align: center;
+  background-color: #212121;
+  color: #fff;
+}
+
+/* Simple fixed footer */
+.cl-footer-simple-dark-fixed {
+  width: 100%;
+  height: 2em;
+  line-height: 2em;
+  text-align: center;
+  background-color: #212121;
+  position: fixed;
+  bottom: 0;
+  color: #fff;
+}
+
+/* Footer expansion for links and .c-footer-list */
+.cl-footer-expansion-dark {
+  background-color: #212121;
+  color: white;
+}
+
+.cl-footer-expansion-dark .cl-footer-list a {
+  color: #888;
+}
+
+.cl-footer-expansion-dark .cl-footer-list a:hover {
+  color: #fff;
+}
+
+/* ---------- Light footers ---------- */
+/* Simple footer */
+.cl-footer-simple-light {
+  width: 100%;
+  height: 2em;
+  line-height: 2em;
+  text-align: center;
+  background-color: #fff;
+  color: #1b1b1b;
+}
+
+/* Simple fixed footer */
+.cl-footer-simple-light-fixed {
+  width: 100%;
+  height: 2em;
+  line-height: 2em;
+  text-align: center;
+  background-color: #fff;
+  position: fixed;
+  bottom: 0;
+  color: #1b1b1b;
+}
+
+/* Footer expansion for links and .c-footer-list */
+.cl-footer-expansion-light {
+  background-color: #fff;
+  color: #1b1b1b;
+}
+
+.cl-footer-expansion-light .cl-footer-list a {
+  color: #777;
+}
+
+.cl-footer-expansion-light .cl-footer-list a:hover {
+  color: #1b1b1b;
+}
