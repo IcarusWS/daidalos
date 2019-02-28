@@ -39,7 +39,7 @@ fe.createEventListener = function(element, data)
     
     function preprocessevent(e)
     {
-        data.action(data.target, data.value);
+        data.action(data.target, element, data.value);
     }
     element.addEventListener(data.event, preprocessevent);
 }

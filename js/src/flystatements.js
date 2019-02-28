@@ -1,9 +1,10 @@
 fs = {};
-fs.storedStatements = {};
+fs.storedActions = {};
+fs.dataSetStatementString = 'statement';
 
-fs.statements = function(statements)
+fs.actions = function(actions)
 {
-    Object.assign(fs.storedStatements, statements);
+    Object.assign(fs.storedActions, actions);
     return true;
 }
 
@@ -16,19 +17,58 @@ fs.runAll = function()
     {
         if(fs.hasStatement(key))
         {
-            console.log('Has a statement: ' + key)
-            //fs.runStatementCode(key);
+            fs.runStatements(key);
         }
     })
 }
 
 fs.hasStatement = function(element)
 {
-    if(element.dataset)
+    var keys = Object.keys(element.dataset);
+    if(keys.length === 0)
     {
-        return true;
-    }
-    else {
         return false;
     }
+    else {
+        return true;
+    }
 }
+
+fs.runStatements = function(element)
+{
+    var dataset = element.dataset;
+
+    // For every dataset item in the element
+    for(var i in dataset)
+    {
+        // The dataset string contains the starting word: 'dataSetString'
+        var dataSetString = fs.dataSetStatementString;
+        if(i.startsWith(dataSetString))
+        {
+            // It is a statement
+            var st = i.substr(dataSetString.length);
+            var value = dataset[i];
+
+            var targetClassAll = element.className;
+            // Process all classes
+            var targetClasses = targetClassAll.split(" ");
+            
+            for(var i = 0; i < targetClasses.length; i++)
+            {
+                // Get the actions from the class
+                var cc = targetClasses[i];
+                if(fs.storedActions[cc])
+                {
+                    var statements = fs.storedActions[cc];
+                    if(statements[st])
+                    {
+                        statements[st].event(element, value);
+                    }
+                }
+            }
+            
+
+        }
+    }
+}
+

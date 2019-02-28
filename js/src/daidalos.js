@@ -1,25 +1,50 @@
 fe.actions({
     'cl-tabview':
     {
-        'setTab': 
+        'SetTab': 
         {
-            event: function(element, value)
+            event: function(element, sender, value)
             {
-
+                console.log(0.5)
+                var tabElement = element.querySelector('#' + value);
+                setTab(tabElement);
             }
         }
     }
 })
 
-fs.statements({
+fs.actions({
     'cl-tab': {
-        'hide': function(element, value)
+        'Active': 
         {
-            console.log('hidden');
-            element.style.display = 'none';
+            event: function(element, value)
+            {
+                setTab(element);
+            }
         }
     }
 })
+
+function setTab(tab_element)
+{
+    var tabs = document.querySelectorAll('.cl-tab');
+    console.log(1);
+    tabs.forEach(function(key)
+    {
+        if(key.parentNode == tab_element.parentNode)
+        {
+            console.log(2);
+            if(key != tab_element)
+            {
+                console.log(3);
+                key.style.display = 'none';
+            }
+            else {
+                key.style.display = 'block';
+            }
+        }
+    })
+}
 
 fs.runAll();
 
