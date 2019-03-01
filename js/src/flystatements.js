@@ -1,28 +1,28 @@
-fs = {};
-fs.storedActions = {};
-fs.dataSetStatementString = 'statement';
+// fly = {};
+// fly.storedActions = {};
+fly.dataSetStatementString = 'statement';
 
-fs.actions = function(actions)
-{
-    Object.assign(fs.storedActions, actions);
-    return true;
-}
+// fly.actions = function(actions)
+// {
+//     Object.assign(fly.storedActions, actions);
+//     return true;
+// }
 
-// fe.runAll & fs.runAll are merged in the final fly.js file
-fs.runAll = function()
-{
-    var elements = document.querySelectorAll('*');
+// fly.runAll & fly.runAll are merged in the final fly.js file
+// fly.runAll = function()
+// {
+//     var elements = document.querySelectorAll('*');
     
-    elements.forEach( function(key)
-    {
-        if(fs.hasStatement(key))
-        {
-            fs.runStatements(key);
-        }
-    })
-}
+//     elements.forEach( function(key)
+//     {
+//         if(fly.hasStatement(key))
+//         {
+//             fly.runStatements(key);
+//         }
+//     })
+// }
 
-fs.hasStatement = function(element)
+fly.hasStatement = function(element)
 {
     var keys = Object.keys(element.dataset);
     if(keys.length === 0)
@@ -34,7 +34,7 @@ fs.hasStatement = function(element)
     }
 }
 
-fs.runStatements = function(element)
+fly.runStatements = function(element)
 {
     var dataset = element.dataset;
 
@@ -42,7 +42,7 @@ fs.runStatements = function(element)
     for(var i in dataset)
     {
         // The dataset string contains the starting word: 'dataSetString'
-        var dataSetString = fs.dataSetStatementString;
+        var dataSetString = fly.dataSetStatementString;
         if(i.startsWith(dataSetString))
         {
             // It is a statement
@@ -57,9 +57,9 @@ fs.runStatements = function(element)
             {
                 // Get the actions from the class
                 var cc = targetClasses[i];
-                if(fs.storedActions[cc])
+                if(fly.storedActions[cc])
                 {
-                    var statements = fs.storedActions[cc];
+                    var statements = fly.storedActions[cc];
                     if(statements[st])
                     {
                         statements[st].event(element, value);
