@@ -1,41 +1,51 @@
-var fe = {};
+var cn = {
+    tabPageClassName: '#cl-tab'
+}
+var fly = {};
 
-fe.listeners = {};
-fe.storedActions = {};
+fly.listeners = {};
+fly.storedActions = {};
 // dataSetActionString is the prefix to the action name, like data-action-set-text, but using the JavaScript notation
-fe.dataSetActionString = 'action';
+fly.dataSetActionString = 'action';
 
-fe.actions = function(actions)
+fly.useDebug = true;
+fly.log = function(txt) { if(fly.useDebug) console.log(txt) }
+
+fly.actions = function(actions)
 {
-    Object.assign(fe.storedActions, actions);
+    Object.assign(fly.storedActions, actions);
     return true;
 }
 
-fe.runAll = function()
+fly.runAll = function()
 {
     var elements = document.querySelectorAll('*');
     
     elements.forEach( function(key)
     {
-        if(fe.isEventEmitter(key))
+        if(fly.isEventEmitter(key))
         {
-            fe.register(key);
+            fly.register(key);
+        }
+        // flystatements
+        if(fly.hasStatement(key))
+        {
+            fly.runStatements(key);
         }
     })
-
+    
 }
 
-fe.run = function(element)
+fly.run = function(element)
 {
-    if(fe.isEventEmitter(element))
+    if(fly.isEventEmitter(element))
     {
-        fe.register(element);
+        fly.register(element);
     }
 }
 
-fe.createEventListener = function(element, data)
+fly.createEventListener = function(element, data)
 {
-    fe.util.warn('Executing fe.createEventListener function: void()')
     
     function preprocessevent(e)
     {
@@ -44,7 +54,7 @@ fe.createEventListener = function(element, data)
     element.addEventListener(data.event, preprocessevent);
 }
 
-fe.isEventEmitter = function(element)
+fly.isEventEmitter = function(element)
 {
     var dataset = element.dataset;
     
@@ -59,11 +69,12 @@ fe.isEventEmitter = function(element)
     }
 }
 
-fe.register = function(element)
+fly.register = function(element)
 {
+    fly.log('[fly] Registering ' + element);
     var dataset = element.dataset;
     var target = document.getElementById(dataset.target);
-    if(!target) {return fe.util.warn('Event target "' + dataset.target + '" is not found.')}
+    if(!target) {return fly.util.warn('Event target "' + dataset.target + '" is not found.')}
 
     var targetClassAll = target.className;
     // Process all classes
@@ -73,15 +84,15 @@ fe.register = function(element)
     {
         // Get the actions from the class
         var cc = targetClasses[i];
-        if(fe.storedActions[cc])
+        if(fly.storedActions[cc])
         {
-            var ac = fe.storedActions[cc];
+            var ac = fly.storedActions[cc];
             // check for every action stored if the element has it
             var ack = Object.keys(ac);
             for(var y = 0; y < ack.length; y++)
             {
                 var itkey = ack[y];
-                var dataSetString = fe.dataSetActionString + itkey;
+                var dataSetString = fly.dataSetActionString + itkey;
                 if(dataSetString in dataset)
                 {
                     // TODO: execute the event assign method
@@ -92,7 +103,7 @@ fe.register = function(element)
                         value: dataset[dataSetString],
                         target: target
                     }
-                    fe.createEventListener(element, data);
+                    fly.createEventListener(element, data);
                 }
             }
         }
@@ -100,37 +111,10 @@ fe.register = function(element)
 
 }
 
-fe.util = {};
-fe.util.warn = function(text)
-{
-    var statement = 'FlyEvents: \n' + text;
-    console.warn(statement)
-}
-fs = {};
-fs.storedActions = {};
-fs.dataSetStatementString = 'statement';
+fly.dataSetStatementString = 'statement';
 
-fs.actions = function(actions)
-{
-    Object.assign(fs.storedActions, actions);
-    return true;
-}
 
-// fe.runAll & fs.runAll are merged in the final fly.js file
-fs.runAll = function()
-{
-    var elements = document.querySelectorAll('*');
-    
-    elements.forEach( function(key)
-    {
-        if(fs.hasStatement(key))
-        {
-            fs.runStatements(key);
-        }
-    })
-}
-
-fs.hasStatement = function(element)
+fly.hasStatement = function(element)
 {
     var keys = Object.keys(element.dataset);
     if(keys.length === 0)
@@ -142,7 +126,7 @@ fs.hasStatement = function(element)
     }
 }
 
-fs.runStatements = function(element)
+fly.runStatements = function(element)
 {
     var dataset = element.dataset;
 
@@ -150,7 +134,7 @@ fs.runStatements = function(element)
     for(var i in dataset)
     {
         // The dataset string contains the starting word: 'dataSetString'
-        var dataSetString = fs.dataSetStatementString;
+        var dataSetString = fly.dataSetStatementString;
         if(i.startsWith(dataSetString))
         {
             // It is a statement
@@ -165,9 +149,9 @@ fs.runStatements = function(element)
             {
                 // Get the actions from the class
                 var cc = targetClasses[i];
-                if(fs.storedActions[cc])
+                if(fly.storedActions[cc])
                 {
-                    var statements = fs.storedActions[cc];
+                    var statements = fly.storedActions[cc];
                     if(statements[st])
                     {
                         statements[st].event(element, value);
@@ -181,3 +165,28 @@ fs.runStatements = function(element)
 }
 
 
+
+fly.actions({
+    'cl-tabview': {
+        'SetTab': {
+            event: function(element, value)
+            {
+                console.log(element);
+                console.log(value);
+            }
+        }
+    }
+});
+fly.runAll();
+console.log('Fly has completed!')
+
+// given constants: cn & fly
+class tabview
+{
+    constructor(element)
+    {
+        if(typeof element != 'object') { return false }
+        this.element = element;
+        this.tabs = element.querySelectorAll(cn.tabPageClassName);
+    }
+}
