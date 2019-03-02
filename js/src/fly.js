@@ -46,7 +46,7 @@ fly.createEventListener = function(element, data)
     
     function preprocessevent(e)
     {
-        data.action(data.target, element, data.value);
+        data.action(data.target, data.value, element);
     }
     element.addEventListener(data.event, preprocessevent);
 }

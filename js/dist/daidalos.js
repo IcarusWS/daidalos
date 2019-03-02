@@ -1,6 +1,3 @@
-var cn = {
-    tabPageClassName: '#cl-tab'
-}
 var fly = {};
 
 fly.listeners = {};
@@ -49,7 +46,7 @@ fly.createEventListener = function(element, data)
     
     function preprocessevent(e)
     {
-        data.action(data.target, element, data.value);
+        data.action(data.target, data.value, element);
     }
     element.addEventListener(data.event, preprocessevent);
 }
@@ -166,6 +163,37 @@ fly.runStatements = function(element)
 
 
 
+// given constants: cn & fly
+
+var __tabPageClassName = '.cl-tab';
+
+class tabview
+{
+    constructor(element)
+    {
+        if(typeof element != 'object') { return false }
+        this.element = element;
+        this.tabs = element.querySelectorAll(__tabPageClassName);
+    }
+
+    setTab(tab_id)
+    {
+        var tabs = this.tabs;
+        // Set all the elements that not match the tab_id to 'not display'
+        for(var i = 0; i < tabs.length; i++)
+        {
+            var id = tabs[i].id;
+            if(id == tab_id)
+            {
+                tabs[i].style.display = 'block';
+            }
+            else {
+                tabs[i].style.display = 'none';
+            }
+        }
+        
+    }
+}
 fly.actions({
     'cl-tabview': {
         'SetTab': {
@@ -173,7 +201,6 @@ fly.actions({
             {
                 var thisTabview = new tabview(element);
                 thisTabview.setTab(value);
-                delete thisTabview;
             }
         }
     }
@@ -181,23 +208,3 @@ fly.actions({
 fly.runAll();
 console.log('Fly has completed!')
 
-// given constants: cn & fly
-class tabview
-{
-    constructor(element)
-    {
-        if(typeof element != 'object') { return false }
-        this.element = element;
-        this.tabs = element.querySelectorAll(cn.tabPageClassName);
-    }
-
-    setTab(tab_id)
-    {
-        this.tabs.forEach(element => {
-            element.style.display = 'none';
-        });
-        
-        console.log('Set the tab to: ' + tab_id);
-        
-    }
-}

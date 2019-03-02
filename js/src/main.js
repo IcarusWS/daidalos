@@ -5,7 +5,6 @@ fly.actions({
             {
                 var thisTabview = new tabview(element);
                 thisTabview.setTab(value);
-                delete thisTabview;
             }
         }
     }
