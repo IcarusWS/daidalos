@@ -171,8 +171,9 @@ fly.actions({
         'SetTab': {
             event: function(element, value)
             {
-                console.log(element);
-                console.log(value);
+                var thisTabview = new tabview(element);
+                thisTabview.setTab(value);
+                delete thisTabview;
             }
         }
     }
@@ -188,5 +189,15 @@ class tabview
         if(typeof element != 'object') { return false }
         this.element = element;
         this.tabs = element.querySelectorAll(cn.tabPageClassName);
+    }
+
+    setTab(tab_id)
+    {
+        this.tabs.forEach(element => {
+            element.style.display = 'none';
+        });
+        
+        console.log('Set the tab to: ' + tab_id);
+        
     }
 }

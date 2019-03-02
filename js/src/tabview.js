@@ -10,11 +10,8 @@ class tabview
 
     setTab(tab_id)
     {
-        this.tabs.forEach(element => {
-            element.style.display = 'none';
-        });
         
-        
+        console.log(this.tabs.length);
         
     }
 }
