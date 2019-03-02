@@ -33,13 +33,13 @@ fly.runAll = function()
     
 }
 
-fly.run = function(element)
-{
-    if(fly.isEventEmitter(element))
-    {
-        fly.register(element);
-    }
-}
+// fly.run = function(element)
+// {
+//     if(fly.isEventEmitter(element))
+//     {
+//         fly.register(element);
+//     }
+// }
 
 fly.createEventListener = function(element, data)
 {
@@ -93,9 +93,17 @@ fly.register = function(element)
                 if(dataSetString in dataset)
                 {
                     // TODO: execute the event assign method
-
+                    // If there is an 'event' data-tag, use it under the event category
+                    var event;
+                    if('event' in dataset)
+                    {
+                        event = dataset.event;
+                    }
+                    else {
+                        event = 'click'
+                    }
                     var data = {
-                        event: 'click',
+                        event: event,
                         action: ac[itkey].event,
                         value: dataset[dataSetString],
                         target: target

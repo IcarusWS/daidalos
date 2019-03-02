@@ -19,14 +19,30 @@
         <br><br><br>
         <!-- TabView & TabController -->
         <nav class="cl-tabview-navbar">
-            <a href="#" data-target="tabview1" data-action-set-tab="tab1">Tab 1</a>
-            <a href="#" data-target="tabview1" data-action-set-tab="tab2">Tab 2</a>
+            <a href="#" data-target="tabview1" data-action-set-tab="1">Tab 1</a>
+            <a href="#" data-target="tabview1" data-action-set-tab="2">Tab 2</a>
         </nav>
-        <div class="cl-tabview" id="tabview1" data-statement-set-tab="tab1">
-            <div class="cl-tab" id="tab1">
+        <div class="cl-tabview" id="tabview1" data-statement-set-tab="1">
+            <div class="cl-tab" data-tab="1">
                 <h2>Tab 1</h2>
             </div>
-            <div class="cl-tab" id="tab2">
+            <div class="cl-tab" data-tab="2">
+                <h2>Tab 2</h2>
+            </div>
+        </div>
+    </section>
+    <hr>
+    <section>
+        <!-- TabView & TabController -->
+        <nav class="cl-tabview-navbar">
+            <a href="#" data-target="tabview2" data-event="mouseover" data-action-set-tab="1">Tab 1</a>
+            <a href="#" data-target="tabview2" data-event="mouseover" data-action-set-tab="2">Tab 2</a>
+        </nav>
+        <div class="cl-tabview" id="tabview2" data-statement-set-tab="1">
+            <div class="cl-tab" data-tab="1">
+                <img src="https://pbs.twimg.com/profile_images/729510516024967168/UIDQuVhp_400x400.jpg" alt="Icarus & daidalos" title="icarus and daedalus (daidalos)">
+            </div>
+            <div class="cl-tab" data-tab="2">
                 <h2>Tab 2</h2>
             </div>
         </div>

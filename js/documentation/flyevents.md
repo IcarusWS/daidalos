@@ -5,9 +5,9 @@ Test documentation
 Create the action object in the following fashion:
 ```json
 {
-    '[Class]': {
-        '[Actions]': {
-            'event': function(){}
+    '[ElementClass]': {
+        '[Action]': {
+            'event': function(target, value, emitter){}
         }
     }
 }

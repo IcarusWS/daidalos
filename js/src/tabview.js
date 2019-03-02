@@ -17,7 +17,10 @@ class tabview
         // Set all the elements that not match the tab_id to 'not display'
         for(var i = 0; i < tabs.length; i++)
         {
-            var id = tabs[i].id;
+            var id = tabs[i].dataset['tab'];
+            console.log(i);
+            console.log(tabs[i]);
+            // console.log(tab_id);
             if(id == tab_id)
             {
                 tabs[i].style.display = 'block';
